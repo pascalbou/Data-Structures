@@ -1,9 +1,8 @@
-from doubly_linked_list import DoublyLinkedList
 import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(
     __file__)), '../doubly_linked_list'))
-
+from doubly_linked_list import DoublyLinkedList
 
 class LRUCache:
     """
@@ -34,6 +33,7 @@ class LRUCache:
         while current:
             if current.value == key:
                 node = current
+            current = current.next
         return node
 
     def get(self, key):
