@@ -1,7 +1,13 @@
 # import sys
 # sys.path.append('../doubly_linked_list')
+# from doubly_linked_list import DoublyLinkedList
 
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(
+    __file__)), '../doubly_linked_list'))
 from doubly_linked_list import DoublyLinkedList
+
 
 class Queue():
     def __init__(self):
