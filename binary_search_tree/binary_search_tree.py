@@ -33,7 +33,19 @@ class BinarySearchTree:
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        print(self.value)
+        print(target)
+
+        if self.value == target:
+            return True
+
+        if self.value > target and self.left:
+            self.left.contains(target)
+
+        if self.value < target and self.right:
+            self.right.contains(target)
+
+        return False           
 
     # Return the maximum value found in the tree
     def get_max(self):
