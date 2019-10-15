@@ -37,13 +37,13 @@ class LRUCache:
         return node
 
     def get(self, key):
-        if self.storage[key]:
+        if key not in self.storage.keys():
+            return None
+        else:
             value = self.storage[key]
             node = self.search_node_by_key(key)
             self.order.move_to_end(node)
             return value
-        else:
-            return None
 
     """
     Adds the given key-value pair to the cache. The newly-
@@ -62,10 +62,10 @@ class LRUCache:
             self.order.remove_from_head()
             self.storage.pop(key_to_remove, None)
 
-        if key in self.storage.keys():
+        if key not in self.storage.keys():
+            self.storage[key] = value
+            self.order.add_to_tail(key)
+        else:
             self.storage[key] = value
             node = self.search_node_by_key(key)
             self.order.move_to_end(node)
-        else:
-            self.storage[key] = value
-            self.order.add_to_tail(key)
