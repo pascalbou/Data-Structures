@@ -57,15 +57,16 @@ class LRUCache:
     """
 
     def set(self, key, value):
-        if self.number_nodes >= 10:
+        if self.number_nodes >= self.limit and key not in self.storage.keys():
             key_to_remove = self.order.head.value
             self.order.remove_from_head()
             self.storage.pop(key_to_remove, None)
 
         if key not in self.storage.keys():
-            self.storage[key] = value
             self.order.add_to_tail(key)
         else:
-            self.storage[key] = value
             node = self.search_node_by_key(key)
             self.order.move_to_end(node)
+
+        self.storage[key] = value
+        self.number_nodes += 1
