@@ -16,7 +16,14 @@ class Heap:
             # print(f'swapping... {self.storage}')
         
     def delete(self):
-        pass
+        result = self.storage.pop(0)
+        
+        for i in range(len(self.storage), 1, -1):
+            j = math.floor(i/2)
+            if self.storage[i-1] > self.storage[j-1]:
+                self.storage[i-1], self.storage[j-1] = self.storage[j-1], self.storage[i-1]
+
+        return result
 
     def get_max(self):
         return self.storage[0]
@@ -25,7 +32,7 @@ class Heap:
         return len(self.storage)
 
     def _bubble_up(self, index):
-        pass
+        pass 
 
     def _sift_down(self, index):
         pass
