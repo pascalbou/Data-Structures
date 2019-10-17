@@ -32,7 +32,18 @@ class Heap:
         return len(self.storage)
 
     def _bubble_up(self, index):
-        pass 
+        print(self)
+        parent_index = math.floor(index+1/2) - 1
+        if self.storage[index] > self.storage[parent_index]:
+            self.storage[index], self.storage[parent_index] =  self.storage[parent_index], self.storage[index]
+        print(self)
 
     def _sift_down(self, index):
-        pass
+        left_child_index = index * 2
+        right_child_index = index * 2 + 1
+        if self.storage[left_child_index] > self.storage[right_child_index]:
+            if self.storage[left_child_index] > self.storage[index] :
+                self.storage[left_child_index], self.storage[index] = self.storage[index], self.storage[left_child_index]
+        else:
+            if self.storage[right_child_index] > self.storage[index] :
+                self.storage[right_child_index], self.storage[index] = self.storage[index], self.storage[right_child_index]            
