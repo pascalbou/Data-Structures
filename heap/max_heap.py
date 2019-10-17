@@ -1,10 +1,20 @@
+import math
+
 class Heap:
     def __init__(self):
         self.storage = []
 
     def insert(self, value):
-        pass
+        self.storage.append(value)
+        # print(f'appending... {self.storage}')
 
+        for i in range(len(self.storage), 1, -1):
+            # compare only with parent node
+            j = math.floor(i/2)
+            if self.storage[i-1] > self.storage[j-1]:
+                self.storage[i-1], self.storage[j-1] = self.storage[j-1], self.storage[i-1]
+            # print(f'swapping... {self.storage}')
+        
     def delete(self):
         pass
 
